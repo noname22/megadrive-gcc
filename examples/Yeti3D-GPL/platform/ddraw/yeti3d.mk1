@@ -1,0 +1,79 @@
+!define BLANK ""
+c:\yeti3dgpl\platform\ddraw\data.obj : c:\yeti3dgpl\src\data.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\..\src\data.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN32__&
+ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\draw.obj : c:\yeti3dgpl\src\draw.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\..\src\draw.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN32__&
+ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\font.obj : c:\yeti3dgpl\src\font.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\..\src\font.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN32__&
+ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\game.obj : c:\yeti3dgpl\src\game.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\..\src\game.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN32__&
+ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\maps.obj : c:\yeti3dgpl\src\maps.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\..\src\maps.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN32__&
+ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\sprites.obj : c:\yeti3dgpl\src\sprites.c .AUTODE&
+PEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\..\src\sprites.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN3&
+2__ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\yeti.obj : c:\yeti3dgpl\src\yeti.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\..\src\yeti.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN32__&
+ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\yeti3dwin32.obj : c:\yeti3dgpl\platform\win32\ye&
+ti3dwin32.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wcc386 ..\win32\yeti3dwin32.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__W&
+IN32__ -zq -otexan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\main.obj : c:\yeti3dgpl\platform\ddraw\main.cpp &
+.AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ *wpp386 main.cpp -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__WIN32__ -zq -ot&
+exan -d1 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\ddraw\yeti3d.exe : c:\yeti3dgpl\platform\ddraw\data.ob&
+j c:\yeti3dgpl\platform\ddraw\draw.obj c:\yeti3dgpl\platform\ddraw\font.obj &
+c:\yeti3dgpl\platform\ddraw\game.obj c:\yeti3dgpl\platform\ddraw\maps.obj c:&
+\yeti3dgpl\platform\ddraw\sprites.obj c:\yeti3dgpl\platform\ddraw\yeti.obj c&
+:\yeti3dgpl\platform\ddraw\yeti3dwin32.obj c:\yeti3dgpl\platform\ddraw\main.&
+obj c:\yeti3dgpl\platform\win32\yeti3dwin32.h .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\ddraw
+ @%write yeti3d.lk1 FIL data.obj,draw.obj,font.obj,game.obj,maps.obj,sprites&
+.obj,yeti.obj,yeti3dwin32.obj,main.obj
+ @%append yeti3d.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b yeti3d.imp 
+ @%append yeti3d.lk1 LIBR yeti3d.imp
+!endif
+!ifneq BLANK ""
+ @%append yeti3d.lk1 op resource=
+!endif
+ *wlink name yeti3d op inc SYS nt_win op m libr ddraw.lib op maxe=25 op q op&
+ symf @yeti3d.lk1
+

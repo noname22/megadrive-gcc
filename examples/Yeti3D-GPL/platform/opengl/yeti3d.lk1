@@ -1,0 +1,2 @@
+FIL data.obj,draw.obj,font.obj,game.obj,maps.obj,sprites.obj,yeti.obj,yeti3dwin32.obj,main.obj
+LIBR \watcom\lib386\nt\glaux.lib,\watcom\lib386\nt\glu32.lib,\watcom\lib386\nt\opengl32.lib

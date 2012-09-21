@@ -33,6 +33,10 @@ if [ ! -d /opt/toolchains ]; then
 fi
 sudo chmod 777 /opt/toolchains
 
+if [ ! -d /opt/toolchains/gen/ldscripts ]; then
+	mkdir /opt/toolchains/gen/ldscripts
+fi
+
 if [ ! -d build ]; then
 	mkdir build
 fi
@@ -69,7 +73,7 @@ mv mpc-$MPC gcc-$DGCC/mpc
 mv gmp-$GMP gcc-$DGCC/gmp
 
 echo ""
-echo "Copying ldscripts"
+echo "Copying ldscripts and makefiles"
 cp ../ldscripts/* .
 
 echo ""
@@ -77,3 +81,6 @@ echo "Building"
 date > build.log
 make -f makefile-gen >> build.log
 
+echo ""
+echo "Installing megadrive ldscripts"
+cp *.ld /opt/toolchains/gen/ldscripts

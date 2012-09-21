@@ -1,0 +1,89 @@
+!define BLANK ""
+c:\yeti3dgpl\platform\opengl\data.obj : c:\yeti3dgpl\src\data.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\..\src\data.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATCH_D&
+RAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r -b&
+t=nt -mf
+
+c:\yeti3dgpl\platform\opengl\draw.obj : c:\yeti3dgpl\src\draw.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\..\src\draw.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATCH_D&
+RAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r -b&
+t=nt -mf
+
+c:\yeti3dgpl\platform\opengl\font.obj : c:\yeti3dgpl\src\font.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\..\src\font.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATCH_D&
+RAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r -b&
+t=nt -mf
+
+c:\yeti3dgpl\platform\opengl\game.obj : c:\yeti3dgpl\src\game.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\..\src\game.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATCH_D&
+RAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r -b&
+t=nt -mf
+
+c:\yeti3dgpl\platform\opengl\maps.obj : c:\yeti3dgpl\src\maps.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\..\src\maps.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATCH_D&
+RAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r -b&
+t=nt -mf
+
+c:\yeti3dgpl\platform\opengl\sprites.obj : c:\yeti3dgpl\src\sprites.c .AUTOD&
+EPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\..\src\sprites.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATC&
+H_DRAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r&
+ -bt=nt -mf
+
+c:\yeti3dgpl\platform\opengl\yeti.obj : c:\yeti3dgpl\src\yeti.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\..\src\yeti.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATCH_D&
+RAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r -b&
+t=nt -mf
+
+c:\yeti3dgpl\platform\opengl\yeti3dwin32.obj : c:\yeti3dgpl\platform\win32\y&
+eti3dwin32.c .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 ..\win32\yeti3dwin32.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__P&
+ATCH_DRAW_TEXTURE__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 &
+-5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\opengl\main.obj : c:\yeti3dgpl\platform\opengl\main.c &
+.AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ *wcc386 main.c -i=C:\WATCOM\h;C:\WATCOM\h\nt -w4 -e25 -d__PATCH_DRAW_TEXTUR&
+E__ -d__WINDOWS__ -d__WIN32__ -d__YETI_EDITOR__ -zq -od -d2 -5r -bt=nt -mf
+
+c:\yeti3dgpl\platform\opengl\yeti3d.exe : c:\yeti3dgpl\platform\opengl\data.&
+obj c:\yeti3dgpl\platform\opengl\draw.obj c:\yeti3dgpl\platform\opengl\font.&
+obj c:\yeti3dgpl\platform\opengl\game.obj c:\yeti3dgpl\platform\opengl\maps.&
+obj c:\yeti3dgpl\platform\opengl\sprites.obj c:\yeti3dgpl\platform\opengl\ye&
+ti.obj c:\yeti3dgpl\platform\opengl\yeti3dwin32.obj c:\yeti3dgpl\platform\op&
+engl\main.obj c:\watcom\lib386\nt\glaux.lib c:\watcom\lib386\nt\glu32.lib c:&
+\watcom\lib386\nt\opengl32.lib .AUTODEPEND
+ @c:
+ cd c:\yeti3dgpl\platform\opengl
+ @%write yeti3d.lk1 FIL data.obj,draw.obj,font.obj,game.obj,maps.obj,sprites&
+.obj,yeti.obj,yeti3dwin32.obj,main.obj
+ @%append yeti3d.lk1 LIBR \watcom\lib386\nt\glaux.lib,\watcom\lib386\nt\glu3&
+2.lib,\watcom\lib386\nt\opengl32.lib
+!ifneq BLANK ""
+ *wlib -q -n -b yeti3d.imp 
+ @%append yeti3d.lk1 LIBR yeti3d.imp
+!endif
+!ifneq BLANK ""
+ @%append yeti3d.lk1 op resource=
+!endif
+ *wlink name yeti3d d all op inc SYS nt_win op m op maxe=25 op q op symf @ye&
+ti3d.lk1
+
