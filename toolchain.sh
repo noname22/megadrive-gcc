@@ -82,5 +82,13 @@ date > build.log
 make -f makefile-gen >> build.log
 
 echo ""
-echo "Installing megadrive ldscripts"
+echo "Installing megadrive ldscripts etc."
 cp *.ld /opt/toolchains/gen/ldscripts
+cp ../sourceme.sh /opt/toolchains/gen
+
+echo ""
+echo "Done!"
+echo "to import the toolchain environment use"
+echo "  source /opt/toolchains/gen/sourceme.sh"
+echo ""
+echo "after that you can eg. try and compile the examples in examples/" 
