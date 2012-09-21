@@ -1,0 +1,53 @@
+from: http://gendev.spritesmind.net/forum/viewtopic.php?p=12798
+
+Building a new Genesis/32X toolchain 
+
+1 - Go here and download the following: 
+
+gcc-core-4.5.2.tar.bz2 
+gcc-g++-4.5.2.tar.bz2 
+gcc-objc-4.5.2.tar.bz2 
+
+Decompress them all in the same folder; you should end up with one folder called gcc-4.5.2. 
+
+2.1 - Go here and download mpfr-2.4.2.tar.bz2. 
+2.2 - Go here and download mpc-0.8.2.tar.gz. 
+2.3 - Go here and download gmp-5.0.1.tar.bz2. 
+
+Decompress them all in the same folder. You should have three folders called mpfr-2.4.2, mpc-0.8.2, and gmp-5.0.1. Rename them to get rid of the version numbers, leaving you with mpfr, mpc, and gmp. Copy them into the gcc-4.5.2 folder. 
+
+3 - Go here and download binutils-2.21.tar.bz2. 
+
+Decompress it in the same folder as the gcc folder so that you have two folders - gcc-4.5.2 and binutils-2.21. 
+
+4 - Go here and download newlib-1.19.0.tar.gz. 
+
+Decompress it in the same folder as gcc and binutils, leaving you with three folders - gcc-4.5.2, binutils-2.21, and newlib-1.19.0. 
+
+5 - Download this archive containing a makefile and several linker scripts. 
+
+Decompress it to the same folder as the others above. 
+
+6 - If you wish to leave the makefile with the default path of /opt/toolchains/gen, make sure you have permission to write to /opt or the toolchain will fail to install to the path. Since there's nothing critical in /opt, it's easiest just to do "sudo chmod 777 -R /opt" which allows anyone to do anything they want in /opt. 
+
+7 - Run "make -f makefile-gen" - depending on the speed of your computer, you should now have two toolchains in /opt/toolchains/gen: m68k-elf and sh-elf. Make another folder in /opt/toolchains/gen called ldscripts and copy the linker scripts from the archive into that folder. 
+
+You now have the latest gcc, binutils, and newlib for both the 68000 and the SH2. The compilers include C, C++, Objective-C, and Objective-C++ for both the 68000 and the SH2. 
+
+8 - Make a bin folder in /opt/toolchains/gen. Copy whatever misc tools you use into it, like sixpack or bin2c. 
+
+9 - You'll need the proper exports to use the toolchains, and assuming you left the path to /opt, they would be: 
+
+For the 68000: 
+export GENDEV=/opt/toolchains/gen 
+export PATH=$GENDEV/m68k-elf/bin:$GENDEV/bin:$PATH 
+
+For the 32X: 
+export GENDEV=/opt/toolchains/gen 
+export PATH=$GENDEV/sh-elf/bin:$GENDEV/m68k-elf/bin:$GENDEV/bin:$PATH 
+
+Here is an archive with example code - it includes Tic-Tac-Toe in both C and C++ for both the MD and the 32X, as well as my 32X version of Yeti3D with Module playing and sound effects. Also included are the latest linker scripts to be copied to /opt/toolchains/gen/ldscripts/. 
+
+MD_32X_Examples.7z
+
+Last edited by Chilly Willy on Thu Mar 24, 2011 11:28 pm; edited 4 times in total
