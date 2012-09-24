@@ -29,12 +29,12 @@ set -e
 
 echo "Making output directories"
 if [ ! -d /opt/toolchains ]; then
-	sudo mkdir /opt/toolchains
+	sudo mkdir -p /opt/toolchains
 fi
 sudo chmod 777 /opt/toolchains
 
 if [ ! -d /opt/toolchains/gen/ldscripts ]; then
-	mkdir /opt/toolchains/gen/ldscripts
+	mkdir -p /opt/toolchains/gen/ldscripts
 fi
 
 if [ ! -d build ]; then
