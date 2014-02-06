@@ -8,7 +8,7 @@ Build scripts for a GCC 4.5.2 toolchain for Sega Megadrive / Genesis and 32X.
 
 Usage
 =====
-  * Install depdendencies including gcc and texinfo (makeinfo). ( debian/ubuntu: apt-get install build-essentials texinfo )
+  * Install depdendencies including gcc and texinfo (makeinfo). ( debian/ubuntu: apt-get install build-essential texinfo )
   * Run toolchain.sh which will download and build gcc 4.5.2 for sega megadrive / genesis and x32. It'll probably take a good 30 minutes to finish.
   * After that you can use source /opt/toolchains/gen/sourceme.sh to set up the environment and start compiling the examples. 
 
