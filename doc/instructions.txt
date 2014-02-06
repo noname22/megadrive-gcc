@@ -1,4 +1,9 @@
+   YOU DON'T HAVE TO FOLLOW THIS GUIDE
+THE TOOLCHAIN SCRIPT DOES ALLL THIS FOR YOU
+
+This is a mirror of the original forum post at gendev.spritmind.net. 
 from: http://gendev.spritesmind.net/forum/viewtopic.php?p=12798
+--------------------------------------------------------------------
 
 Building a new Genesis/32X toolchain 
 
