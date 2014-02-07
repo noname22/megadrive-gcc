@@ -13,16 +13,16 @@ NEWLIB=1.19.0
 
 function Download
 {
-	echo -n "  * $1"
+	echo -n "  * $1 ..."
 	wget -c -q $1
-	echo " ☑"
+	echo " done"
 }
 
 function Unpack
 {
-	echo -n "  * $1"
+	echo -n "  * $1 ..."
 	tar xf $1
-	echo " ☑"
+	echo " done"
 }
 
 set -e
@@ -37,11 +37,10 @@ if [ ! -d /opt/toolchains/gen/ldscripts ]; then
 	mkdir -p /opt/toolchains/gen/ldscripts
 fi
 
-if [ ! -d build ]; then
-	mkdir build
-fi
+mkdir -p build
+mkdir -p download
 
-cd build
+cd download
 
 echo "Downloading gcc"
 Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-core-$DGCC.tar.bz2
@@ -56,15 +55,17 @@ Download http://www.mpfr.org/mpfr-2.4.2/mpfr-$MPFR.tar.bz2
 Download http://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS.tar.bz2
 Download ftp://sources.redhat.com/pub/newlib/newlib-$NEWLIB.tar.gz
 
+cd ../build
+
 echo ""
 echo "Unpacking"
-Unpack gcc-core-$DGCC.tar.bz2
-Unpack gcc-g++-$DGCC.tar.bz2
-Unpack mpc-$MPC.tar.gz
-Unpack gmp-$GMP.tar.bz2
-Unpack mpfr-$MPFR.tar.bz2
-Unpack binutils-$BINUTILS.tar.bz2
-Unpack newlib-$NEWLIB.tar.gz
+Unpack ../download/gcc-core-$DGCC.tar.bz2
+Unpack ../download/gcc-g++-$DGCC.tar.bz2
+Unpack ../download/mpc-$MPC.tar.gz
+Unpack ../download/gmp-$GMP.tar.bz2
+Unpack ../download/mpfr-$MPFR.tar.bz2
+Unpack ../download/binutils-$BINUTILS.tar.bz2
+Unpack ../download/newlib-$NEWLIB.tar.gz
 
 echo ""
 echo "Moving and renaming"
@@ -76,10 +77,13 @@ echo ""
 echo "Copying ldscripts and makefiles"
 cp ../ldscripts/* .
 
+echo "Truncating documentation files (texinfo version incompatibility workaround)"
+for f in gcc-$DGCC/gcc/doc/*.texi; do echo "" > "$f"; done
+
 echo ""
-echo "Building"
+echo "Building (see build/build.log)"
 date > build.log
-make -f makefile-gen >> build.log
+CFLAGS="-w" make -f makefile-gen >> build.log
 
 echo ""
 echo "Installing megadrive ldscripts etc."
