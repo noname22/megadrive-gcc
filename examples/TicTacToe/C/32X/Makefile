@@ -12,7 +12,7 @@ LINKFLAGS = -T $(GENDEV)/ldscripts/mars.ld -Wl,-Map=output.map -nostdlib
 
 INCS = -I. -I$(GENDEV)/sh-elf/include -I$(GENDEV)/sh-elf/sh-elf/include
 
-LIBS = -L$(GENDEV)/sh-elf/sh-elf/lib -L$(GENDEV)/sh-elf/lib/gcc/sh-elf/4.5.2 -lc -lgcc -lgcc-Os-4-200 -lnosys
+LIBS = -L$(GENDEV)/sh-elf/sh-elf/lib -L$(GENDEV)/sh-elf/lib/gcc/sh-elf/$(GENDEV_GCC_VERSION) -lc -lgcc -lgcc-Os-4-200 -lnosys
 
 OBJS = sh2_crt0.o main.o hw_32x.o font.o
 

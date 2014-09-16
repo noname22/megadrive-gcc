@@ -13,7 +13,7 @@ LDFLAGS = -T $(GENDEV)/ldscripts/mars.ld -Map output.map -relax -small -e _start
 
 INCS = -I. -I./../../src -I$(GENDEV)/sh-elf/include -I$(GENDEV)/sh-elf/sh-elf/include
 
-LIBS = -L$(GENDEV)/sh-elf/sh-elf/lib -L$(GENDEV)/sh-elf/lib/gcc/sh-elf/4.5.2 -lm -lc -lgcc -lgcc-Os-4-200
+LIBS = -L$(GENDEV)/sh-elf/sh-elf/lib -L$(GENDEV)/sh-elf/lib/gcc/sh-elf/$(GENDEV_GCC_VERSION) -lm -lc -lgcc -lgcc-Os-4-200
 
 OBJS = sh2_crt0.o main.o data.o draw.o game.o maps.o sprites.o yeti.o module.o sound.o hw_32x.o font.o files-psyg.o
 

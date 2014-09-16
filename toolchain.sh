@@ -4,13 +4,16 @@
 # (mirrored in doc/instrucitons.txt)
 
 DGCC=4.9.1
-export GCC_VERSION=$DGCC
+GMP_BASE=6.0.0
+GMP=${GMP_BASE}a
+MPFR=3.1.2
+MPC=1.0.2
+BINUTILS=2.24
+NEWLIB=2.0.0
 
-GMP=5.0.1
-MPFR=2.4.2
-MPC=0.8.2
-BINUTILS=2.21.1
-NEWLIB=1.19.0
+export GCC_VERSION=$DGCC
+export BINUTILS_VERSION=$BINUTILS
+export NEWLIB_VERSION=$NEWLIB
 
 function Download
 {
@@ -51,8 +54,8 @@ Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-$DGCC.tar.bz2
 echo ""
 echo "Downloading dependencies"
 Download http://www.multiprecision.org/mpc/download/mpc-$MPC.tar.gz
-Download ftp://ftp.gmplib.org/pub/gmp-5.0.1/gmp-$GMP.tar.bz2
-Download http://www.mpfr.org/mpfr-2.4.2/mpfr-$MPFR.tar.bz2 
+Download ftp://ftp.gmplib.org/pub/gmp-$GMP_BASE/gmp-$GMP.tar.bz2
+Download http://www.mpfr.org/mpfr-$MPFR/mpfr-$MPFR.tar.bz2 
 
 Download http://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS.tar.bz2
 Download ftp://sources.redhat.com/pub/newlib/newlib-$NEWLIB.tar.gz
@@ -74,7 +77,7 @@ echo ""
 echo "Moving and renaming"
 mv mpfr-$MPFR gcc-$DGCC/mpfr
 mv mpc-$MPC gcc-$DGCC/mpc
-mv gmp-$GMP gcc-$DGCC/gmp
+mv gmp-$GMP_BASE gcc-$DGCC/gmp
 
 echo ""
 echo "Copying ldscripts and makefiles"
