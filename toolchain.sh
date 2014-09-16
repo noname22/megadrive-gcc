@@ -3,7 +3,8 @@
 # as per http://gendev.spritesmind.net/forum/viewtopic.php?p=12798
 # (mirrored in doc/instrucitons.txt)
 
-DGCC=4.5.2
+DGCC=4.9.1
+export GCC_VERSION=$DGCC
 
 GMP=5.0.1
 MPFR=2.4.2
@@ -43,8 +44,9 @@ mkdir -p download
 cd download
 
 echo "Downloading gcc"
-Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-core-$DGCC.tar.bz2
-Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-g++-$DGCC.tar.bz2
+#Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-core-$DGCC.tar.bz2
+#Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-g++-$DGCC.tar.bz2
+Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-$DGCC.tar.bz2
 
 echo ""
 echo "Downloading dependencies"
@@ -59,8 +61,9 @@ cd ../build
 
 echo ""
 echo "Unpacking"
-Unpack ../download/gcc-core-$DGCC.tar.bz2
-Unpack ../download/gcc-g++-$DGCC.tar.bz2
+#Unpack ../download/gcc-core-$DGCC.tar.bz2
+#Unpack ../download/gcc-g++-$DGCC.tar.bz2
+Unpack ../download/gcc-$DGCC.tar.bz2
 Unpack ../download/mpc-$MPC.tar.gz
 Unpack ../download/gmp-$GMP.tar.bz2
 Unpack ../download/mpfr-$MPFR.tar.bz2
@@ -77,8 +80,8 @@ echo ""
 echo "Copying ldscripts and makefiles"
 cp ../ldscripts/* .
 
-echo "Truncating documentation files (texinfo version incompatibility workaround)"
-for f in gcc-$DGCC/gcc/doc/*.texi; do echo "" > "$f"; done
+#echo "Truncating documentation files (texinfo version incompatibility workaround)"
+#for f in gcc-$DGCC/gcc/doc/*.texi; do echo "" > "$f"; done
 
 echo ""
 echo "Building (see build/build.log)"
