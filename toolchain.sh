@@ -3,6 +3,9 @@
 # as per http://gendev.spritesmind.net/forum/viewtopic.php?p=12798
 # (mirrored in doc/instrucitons.txt)
 
+# any arguments are passed to make in the sub-projcets
+# sadly, -j2 is a bad idea, because it makes the builds fail :(
+
 DGCC=4.9.1
 GMP_BASE=6.0.0
 GMP=${GMP_BASE}a
@@ -14,6 +17,7 @@ NEWLIB=2.0.0
 export GCC_VERSION=$DGCC
 export BINUTILS_VERSION=$BINUTILS
 export NEWLIB_VERSION=$NEWLIB
+export EXTRA_MAKE_FLAGS="$@"
 
 function Download
 {
@@ -88,8 +92,10 @@ cp ../ldscripts/* .
 
 echo ""
 echo "Building (see build/build.log)"
+echo "Note: the script says when it finished successfully."
+echo "If it terminates without a message, the build failed and you should check the log file."
 date > build.log
-CFLAGS="-w" make -f makefile-gen >> build.log
+CFLAGS="-w" make -f makefile-gen &>> build.log
 
 echo ""
 echo "Installing megadrive ldscripts etc."

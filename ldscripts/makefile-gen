@@ -95,7 +95,7 @@ $(build_gcc_pass1): logdir
 	-mkdir -p $(build)
 	> $(log)
 	cd $(build);  ../$(src_dir)/configure --target=$(target) --prefix=$(prefix) --without-headers --with-newlib --enable-languages=c --disable-libssp --disable-tls $(extra_configure_args) $(to_log)
-	make -C $(build) all install DESTDIR=$(DESTDIR) $(to_log)
+	make $(EXTRA_MAKE_FLAGS) -C $(build) all install DESTDIR=$(DESTDIR) $(to_log)
 
 $(build_newlib): build = build-newlib-$(target)-$(newlib_ver)
 $(build_newlib): src_dir = newlib-$(newlib_ver)
@@ -105,7 +105,7 @@ $(build_newlib): logdir
 	-mkdir -p $(build)
 	> $(log)
 	cd $(build); ../$(src_dir)/configure --target=$(target) --prefix=$(prefix) $(extra_configure_args) $(to_log)
-	make -C $(build) all install DESTDIR=$(DESTDIR) $(to_log)
+	make $(EXTRA_MAKE_FLAGS) -C $(build) all install DESTDIR=$(DESTDIR) $(to_log)
 	$(clean_up)
 
 $(build_gcc_pass2): log = $(logdir)/$(build)-pass2.log
@@ -115,7 +115,7 @@ $(build_gcc_pass2): logdir
 	> $(log)
 	cd $(build);  ../$(src_dir)/configure --target=$(target) --prefix=$(prefix) --with-newlib --disable-libssp --disable-tls \
 		--enable-threads=$(thread_model) --enable-languages=$(pass2_languages) $(extra_configure_args) $(to_log)
-	make -C $(build) all install DESTDIR=$(DESTDIR) $(to_log)
+	make $(EXTRA_MAKE_FLAGS) -C $(build) all install DESTDIR=$(DESTDIR) $(to_log)
 	$(clean_up)
 
 # ---- }}}}
