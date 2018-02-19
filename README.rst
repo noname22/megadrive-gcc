@@ -4,7 +4,7 @@ Megadrive GCC Toolchain
 
 About
 =====
-Build scripts for a GCC 4.5.2 toolchain for Sega Megadrive / Genesis and 32X.
+Build scripts for a GCC 4.9.1 toolchain for Sega Megadrive / Genesis and 32X.
 
 Usage
 =====
