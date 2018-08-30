@@ -10,7 +10,7 @@ Usage
 =====
   * Install depdendencies including gcc and texinfo (makeinfo). ( debian/ubuntu: apt-get install build-essential texinfo )
   * Run toolchain.sh which will download and build gcc for sega megadrive / genesis and x32. It'll probably take a good 30 minutes to finish.
-  * After that you can use source /opt/toolchains/gen/sourceme.sh to set up the environment and start compiling the examples. 
+  * After that you can use source /opt/toolchains/sega/sourceme.sh to set up the environment and start compiling the examples. 
 
 Authors
 =======
