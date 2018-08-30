@@ -6,12 +6,12 @@
 # any arguments are passed to make in the sub-projcets
 # sadly, -j2 is a bad idea, because it makes the builds fail :(
 
-DGCC=4.9.1
+DGCC=8.2.0
 GMP=6.1.2
 MPFR=3.1.2
 MPC=1.0.2
-BINUTILS=2.24
-NEWLIB=2.0.0
+BINUTILS=2.28
+NEWLIB=2.5.0
 
 export GCC_VERSION=$DGCC
 export BINUTILS_VERSION=$BINUTILS
@@ -40,8 +40,8 @@ if [ ! -d /opt/toolchains ]; then
 fi
 sudo chmod 777 /opt/toolchains
 
-if [ ! -d /opt/toolchains/gen/ldscripts ]; then
-	mkdir -p /opt/toolchains/gen/ldscripts
+if [ ! -d /opt/toolchains/sega/ldscripts ]; then
+	mkdir -p /opt/toolchains/sega/ldscripts
 fi
 
 mkdir -p build
@@ -52,7 +52,7 @@ cd download
 echo "Downloading gcc"
 #Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-core-$DGCC.tar.bz2
 #Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-g++-$DGCC.tar.bz2
-Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-$DGCC.tar.bz2
+Download http://ftp.gnu.org/gnu/gcc/gcc-$DGCC/gcc-$DGCC.tar.xz
 
 echo ""
 echo "Downloading dependencies"
@@ -69,7 +69,7 @@ echo ""
 echo "Unpacking"
 #Unpack ../download/gcc-core-$DGCC.tar.bz2
 #Unpack ../download/gcc-g++-$DGCC.tar.bz2
-Unpack ../download/gcc-$DGCC.tar.bz2
+Unpack ../download/gcc-$DGCC.tar.xz
 Unpack ../download/mpc-$MPC.tar.gz
 Unpack ../download/gmp-$GMP.tar.bz2
 Unpack ../download/mpfr-$MPFR.tar.bz2
@@ -98,12 +98,12 @@ CFLAGS="-w" make -f makefile-gen &>> build.log
 
 echo ""
 echo "Installing megadrive ldscripts etc."
-cp *.ld /opt/toolchains/gen/ldscripts
-cp ../sourceme.sh /opt/toolchains/gen
+cp *.ld /opt/toolchains/sega/ldscripts
+cp ../sourceme.sh /opt/toolchains/sega
 
 echo ""
 echo "Done!"
 echo "to import the toolchain environment use"
-echo "  source /opt/toolchains/gen/sourceme.sh"
+echo "  source /opt/toolchains/sega/sourceme.sh"
 echo ""
 echo "after that you can eg. try and compile the examples in examples/" 
