@@ -20,6 +20,9 @@ There is also a pre-built windows version of the toolchain in that thread.
 
 githubized by noname@nurd.se
 
+Updated mars.ld from https://github.com/mic-/lusid-dreams .
+Updated md.ld from //github.com/kubilus1/gendev .
+
 See also
 ========
 This is just a plain toolchain with a few helper libs provided by Chilly Willy. If you want a more complete SDK take a look at SGDK.
