@@ -15,12 +15,15 @@ Usage
 Authors
 =======
 This is all based on a forum post by Chilly Willy on SpritesMind.Net, check it out at
+
 http://gendev.spritesmind.net/forum/viewtopic.php?p=12798
+
 There is also a pre-built windows version of the toolchain in that thread.
 
 githubized by noname@nurd.se
 
 Updated mars.ld from https://github.com/mic-/lusid-dreams .
+
 Updated md.ld from //github.com/kubilus1/gendev .
 
 See also
@@ -28,4 +31,5 @@ See also
 This is just a plain toolchain with a few helper libs provided by Chilly Willy. If you want a more complete SDK take a look at SGDK.
 
 Windows: https://github.com/Stephane-D/SGDK
+
 Linux port: https://github.com/kubilus1/gendev
