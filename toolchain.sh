@@ -6,7 +6,7 @@
 # any arguments are passed to make in the sub-projcets
 # sadly, -j2 is a bad idea, because it makes the builds fail :(
 
-DGCC=8.2.0
+DGCC=8.3.0
 GMP=6.1.2
 MPFR=3.1.2
 MPC=1.0.2
@@ -61,7 +61,7 @@ Download https://gmplib.org/download/gmp/gmp-$GMP.tar.bz2
 Download http://www.mpfr.org/mpfr-$MPFR/mpfr-$MPFR.tar.bz2 
 
 Download http://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS.tar.bz2
-Download ftp://sources.redhat.com/pub/newlib/newlib-$NEWLIB.tar.gz
+Download ftp://sourceware.org/pub/newlib/newlib-$NEWLIB.tar.gz
 
 cd ../build
 
